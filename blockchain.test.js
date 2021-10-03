@@ -37,5 +37,17 @@ describe ('Blockchain',() => {
         expect(bc.isValidChain(bc2.chain)).toBe(false);
     });
 
+    it("It replaces the chain with a validchain",() => {
+        bc2.addBlock("goo");
+        bc.replaceChain(bc2.chain);
+        expect(bc.chain).toEqual(bc2.chain);
+    });
+
+    it("It does not replace the chain which is less then or equal in lenght" , () => {
+        bc.addBlock("foo");
+        bc.replaceChain(bc2.chain);
+        expect(bc.chain).not.toEqual(bc2.chain);
+    });
+
      
 });
