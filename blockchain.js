@@ -24,7 +24,7 @@ class Blockchain {
             const block = chain[i];
             const lastBlock = chain[i-1];
 
-            if (block.lastHash !== lastBlock.lastHash || block.hash !== Block.blockHash(block)){//also check wheter the generation of hash is not correct or it is temper
+            if (block.lastHash !== lastBlock.hash || block.hash !== Block.blockHash(block)){//also check wheter the generation of hash is not correct or it is temper
                 return false;
             }
         }

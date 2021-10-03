@@ -3,10 +3,11 @@ const Block = require('./block');
 
 
 describe ('Blockchain',() => {
-    let bc;
+    let bc,bc2;
 
     beforeEach(() => {
         bc = new Blockchain();
+        bc2 = new Blockchain();
     });
 
     it('starts from genesis block',()=>{
@@ -19,4 +20,11 @@ describe ('Blockchain',() => {
 
         expect(bc.chain[bc.chain.length-1].data).toEqual(data);
     });
+
+    it("validates the correct chain" , () =>{
+        bc2.addBlock("foo");
+        expect(bc.isValidChain(bc2.chain)).toBe(true);
+    });
+
+    
 });
