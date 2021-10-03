@@ -30,6 +30,21 @@ class Blockchain {
         }
         return true;
     }
+
+    replaceChain (newChain) {//adding functionality to support multiple colaborators
+        if (newChain.length <= this.chain.length){
+            console.log("chain is no longer then the current chain");
+            return;
+        }
+
+        else if(!this.isValidChain(newChain)){
+            console.log("this chain is not valid");
+        };
+
+        
+        console.log("Replacing block chain with new chain");
+        this.chain = newChain;
+    };
 }
 
 module.exports = Blockchain;
