@@ -16,7 +16,7 @@ class P2pServer {
         server.on("connection", socket => this.connectSocket(socket));//listen incoming messages
 
 
-        this.connectToPeers ();
+        this.connectToPeers();
         console.log(`Listening to the peer-to-peer server at port: ${P2P_PORT}`);//additional  information for user
     }
 
@@ -25,7 +25,7 @@ class P2pServer {
         console.log("Socket Connected");
     }
 
-    connectToPeers (){
+    connectToPeers() {
         peers.forEach(peer => {//address of peer
             const socket = new Websocket(peer);//create a new socket object
 

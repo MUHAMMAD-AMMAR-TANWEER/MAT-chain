@@ -9,12 +9,12 @@ const HTTP_PORT = process.env.HTTP_PORT || 3001;//it allows to run on 3001
 
 const app = express();
 
-app.use(bodyParser.json());
+
 const bc = new Blockchain();
 
 const p2pServer = new P2pServer(bc);
 //get app
-
+app.use(bodyParser.json());
 app.get('/blocks' , (req, res) => {
     res.json(bc.chain);
 });
