@@ -23,6 +23,11 @@ class P2pServer {
     connectSocket(socket){//push connected socket to sockets array
         this.sockets.push(socket);
         console.log("Socket Connected");
+
+
+        this.messageHandler(socket);
+
+        socket.send(JSON.stringify(this.blockchain.chain));
     }
 
     connectToPeers() {
@@ -31,6 +36,13 @@ class P2pServer {
 
             socket.on('open', () => this.connectSocket(socket));//to connect tos socket and start server
         });
+    }
+
+    messageHandler(socket){
+        socket.on('message', message => {
+            const data = JSON.parse(message);
+            console.log('data',data);
+        })
     }
 }
 
